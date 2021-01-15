@@ -11,12 +11,14 @@ class SearchIllness:
         listOfIllness = []
 
         data = SearchIllness.retrieve()
+        inputList = input.split(" ")
         for i in data:
-            if input in i.name or input in i.symptoms:
-                listOfIllness.append({
-                    'name': i.name,
-                    'symptoms': i.symptoms,
-                    'description': i.description,
-                    'more': i.more
-                })
+            for j in inputList:
+                if j.lower() in i.name.lower() or j.lower() in i.symptoms.lower():
+                    listOfIllness.append({
+                        'name': i.name,
+                        'symptoms': i.symptoms,
+                        'description': i.description,
+                        'more': i.more
+                    })
         return {'list': listOfIllness}

@@ -9,5 +9,4 @@ def mainView(request):
 
     if request.method == 'POST':
         context = SearchIllness.search(request)
-    print(context)
     return render(request, "home.html", context)

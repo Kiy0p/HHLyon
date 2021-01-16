@@ -21,4 +21,5 @@ class SearchIllness:
                         'description': i.description,
                         'more': i.more
                     })
+                    break
         return {'list': listOfIllness}

@@ -11,20 +11,22 @@
 
 <body>
 	<div id="box">
-        <img src="../static/logo.png" /> <h1>TILT</h1>
-        <br><br><br>
-        <nav id="navigation">
-            <form method="POST">
+		<div id="head">
+	        <img src="{% static 'logo.png' %}" />
+	        <p id="login">Docteur : Monsieur Charles DUPONT</p>
+		</div>
+		<h1 id="title">TILT</h1>
+        <nav>
+            <form method="POST" id="navigation">
 				{% csrf_token %}
-                <textarea name="illnessName" class="input" placeholder="Enter illness name or symptoms."></textarea>
-                <input type="submit" name="submit" value="Rechercher" id="research" class="linear-gradient"/>
+                <textarea name="illnessName" class="input" placeholder="Enter illness symptoms."></textarea>
+                <input type="submit" name="submit" value="Rechercher" class="linear-gradient"/>
             </form>
         </nav>
-        <p id="login">Docteur : Monsieur Charles DUPONT</p>
     </div>
     <div id="container">
-    	<div id="results">
 		{% for i in list%}
+		<div id="results">
 			<p class="illnessName">
 				{{i.name}}
 			</p>
@@ -39,9 +41,15 @@
 				{{i.more}}
 			</p>
 			{% endif %}
+		</div>
 		{% endfor %}
-    	</div>
     </div>
+	{% if list != null %}
+	<p id="symptomes">
+		Est-ce que votre patient à les symptômes suivants : Reflet pupillaire blanchâtre<br/><br/>
+		Vous trouverez le centre de référence à l'adresse suivante : 123 fakeIt 69000
+	</p>
+	{% endif %}
 	<footer>
       <p>Author: Tilt Web Designer <a href="mailto:hege@example.com">hege@example.com</a></p>
     </footer>
